@@ -1,0 +1,35 @@
+.card-container {
+    width: 35%;
+    height: 400px;
+    background-color: blue;
+    border-radius: 40px;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.Top-Card{
+    padding-top:10px;
+}
+
+.ligne_horizontal {
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    align-items: center;
+    /* margin-left: 500px; */
+  }
+  
+  .ligne_horizontal:before,
+  .ligne_horizontal:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid rgb(19, 19, 20);
+    margin: auto;
+  }
+  
+  .ligne_horizontal h1 {
+    font-size: 45px;
+    font-family: "Rammetto One", cursive;
+    color: rgb(10, 17, 29);
+  }
+  
