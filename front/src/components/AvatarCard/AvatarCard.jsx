@@ -42,19 +42,22 @@ function AvatarCard({ idAgriculteur, farmSize, transaction }) {
         <div className="transaction">
           <h2>Historique des transactions</h2>
         </div>
-          <ul className="listeTransactions">
-                {transaction.slice(transaction.length-3,transaction.length).map((transac) => (
+        <div className="container-transactions">
+                <ul className="listeTransactions">
+                      {transaction.slice(transaction.length-3,transaction.length).map((transac) => (
 
-                    <li className="uneTransaction" key={transac.id}>
-                        <div className="divTHistoriqueTransaction">
-                          <h2 className="dateTransaction" >Date : {transac.created_at.substring(0,10)}</h2>
-                          <h3 className="produitTransaction">Produit : {transac.product_id}</h3>
-                          <h3 className="quantiteTransaction">Quantité : {transac.quantity}</h3>
-                          <h3 className="prixTransaction">Prix : {transac.price}</h3>                  
-                        </div>
-                    </li>
-                ))}
-          </ul>
+                          <li className="uneTransaction" key={transac.id}>
+                              <div className="divTHistoriqueTransaction">
+                                <h2 className="dateTransaction" >Date : <br></br>
+                                {transac.created_at.substring(0,10)}</h2>
+                                <h3 className="produitTransaction">Produit : {transac.product_id}</h3>
+                                <h3 className="quantiteTransaction">Quantité : {transac.quantity} t</h3>
+                                <h3 className="prixTransaction">Prix : {transac.price} €/Tonne</h3>                  
+                              </div>
+                          </li>
+                      ))}
+                </ul>
+          </div>
       </div>
     </div>
   );
