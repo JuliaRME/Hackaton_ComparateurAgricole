@@ -4,11 +4,11 @@
   "description": "serveur express",
   "main": "app.js",
   "scripts": {
-    "start": "npm-run-all migrate-db start:server",
+    "start": "node app.js",
     "start:watch": "nodemon app.js",
-    "migrate-db": "db-migrate up",
     "rollback-last-db-migration": "db-migrate down",
-    "create-db-migration": "db-migrate create $NAME --sql-file"
+    "create-db-migration": "db-migrate create $NAME --sql-file",
+    "migrate-db": "db-migrate up"
   },
   "author": "Gael",
   "license": "ISC",
