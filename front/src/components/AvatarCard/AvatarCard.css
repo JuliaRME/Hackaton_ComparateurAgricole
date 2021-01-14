@@ -1,11 +1,15 @@
 .card-container {
+  margin-top: 40px;
+  margin-left: 70%;
+  z-index : 20;
+  position : absolute;
   width: 25%;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   /* font-family: 'Yusei Magic', sans-serif; */
   font-size: 14px;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 5px 5px 5px grey;
     background: linear-gradient( #00662b, #13aa52);
 
   /* background-image: linear-gradient( 109.6deg,  rgba(102,203,149,1) 11.2%, rgba(39,210,175,1) 98.7% ); */
@@ -71,4 +75,9 @@
   margin-right: 10px;
   color:whitesmoke;
   font-size: 23px;
+}
+
+.uneTransaction{
+  list-style-type: none;
+  font-size: 10px;
 }
