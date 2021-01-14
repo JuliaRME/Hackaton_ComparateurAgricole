@@ -1,35 +1,41 @@
 .card-container {
-    width: 35%;
-    height: 400px;
-    background-color: blue;
-    border-radius: 40px;
-    align-items: center;
-    font-family: 'Open Sans', sans-serif;
+  width: 30%;
+  height: 600px;
+  border-radius: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: semi-bold;
+  box-shadow: 10px 5px 5px grey;
+  background-image: linear-gradient(
+    to right,
+    #ece9e6 0%,
+    #ffffff 51%,
+    #ece9e6 100%
+  );
+  transition: 1s ease;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.Top-Card{
-    padding-top:10px;
+.card-container:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: 1s ease;
 }
 
-.ligne_horizontal {
-    display: flex;
-    flex-direction: row;
-    width:50%;
-    align-items: center;
-    /* margin-left: 500px; */
-  }
-  
-  .ligne_horizontal:before,
-  .ligne_horizontal:after {
-    content: "";
-    flex: 1 1;
-    border-bottom: 2px solid rgb(19, 19, 20);
-    margin: auto;
-  }
-  
-  .ligne_horizontal h1 {
-    font-size: 45px;
-    font-family: "Rammetto One", cursive;
-    color: rgb(10, 17, 29);
-  }
-  
+.TopSection {
+  height: 30%;
+  width: 90%;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: rgb(64, 156, 121);
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.BottomSection {
+  font-style: italic;
+}

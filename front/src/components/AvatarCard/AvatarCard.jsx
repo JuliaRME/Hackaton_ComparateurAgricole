@@ -7,19 +7,19 @@ function AvatarCard({ idAgriculteur, farmSize/*, historiqueTransaction**/ }) {
   return (
     <div>
       <div className="card-container">
-        <section className="topSection">
-          <h1>Agriculteur n°{idAgriculteur}</h1>
+        <div className="TopSection">      
+          <h1 classNameme="AgriculteurTitle">Agriculteur n°{idAgriculteur}</h1>
           <div className="FarmSizeTheme">
             <h2>Taille ferme: {farmSize} hectare</h2>
           </div>
-        </section>
+        </div>
 
-        <section className="BottomSection">
+        <div className="BottomSection">
           <h2>Historique des transactions</h2>
           {/* <Link to="/Transaction">
             <img src={TransactionTab} alt="TransactionTab" className="logo" />
           </Link> */}
-        </section>
+        </div>
       </div>
     </div>
   );
