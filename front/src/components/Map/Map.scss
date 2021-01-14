@@ -3,6 +3,7 @@ html {
 }
 
 .container {
+  z-index: 0;
   display: flex;
   border-radius: 15px;
   .container__colonne {
