@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReactMapGl, { Marker } from "react-map-gl";
 
@@ -6,7 +6,14 @@ import "./Map.scss";
 import logo from "./logo.svg";
 
 function Map() {
-  // const [liste, setListe] = useState();
+  const [liste, setListe] = useState([]); 
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/cities")
+      .then((res)=> {
+        console.log(res)
+      })
+  }, [])
+
 
   // mapBox state
   const [viewport, setViewport] = useState({
