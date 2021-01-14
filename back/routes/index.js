@@ -1,12 +1,10 @@
 const router = require("express").Router();
+const routeFarmer = require('./farmers.routes');
+const routeCities = require('./cities.routes');
 
 
-
-// ajout de route
-const routeExemple = require('./route_exemple');
-
-router.use('/album', routeExemple);
-//
+router.use('/farmers', routeFarmer);
+router.use('/cities', routeCities);
 
 
 
