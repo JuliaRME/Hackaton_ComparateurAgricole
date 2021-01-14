@@ -1,18 +1,27 @@
-import React from "react";
-import axios from 'axios'; 
+import React, { useState } from "react";
+import axios from "axios";
+import ReactMapGl, { Marker } from "react-map-gl";
 
 import "./Map.scss";
 import logo from "./logo.svg";
 
 function Map() {
-// const [liste, setListe] = useState();
+  // const [liste, setListe] = useState();
+
+  // mapBox state
+  const [viewport, setViewport] = useState({
+    latitude: 48.44872485510523,
+    longitude: 1.5381733555875658,
+    width: "100vw",
+    height: "100vh",
+    zoom: 7,
+  });
 
   const handleclick = () => {
     console.log("click");
-    axios.get("URL")
-      .then(res => {
-        // setListe({});
-      })
+    axios.get("URL").then((res) => {
+      // setListe({});
+    });
   };
 
   return (
@@ -31,12 +40,15 @@ function Map() {
         </div>
       </div>
       <div className="container__map">
-        <iframe
-          title="map"
-          src="https://www.google.com/maps/d/u/0/embed?mid=1D4h06e_v1PsSijpdz3zst3ZMEPYqIGYh"
-          width="1280"
-          height="720"
-        ></iframe>
+        <ReactMapGl
+          {...viewport}
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+          onViewportChange={(viewport) => {
+            setViewport(viewport);
+          }}
+        >
+          marker here
+        </ReactMapGl>
       </div>
     </div>
   );
