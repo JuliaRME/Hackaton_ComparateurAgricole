@@ -4,7 +4,7 @@
   z-index : 20;
   position : absolute;
   width: 25%;
-  height: 600px;
+  height: 500px;
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   /* font-family: 'Yusei Magic', sans-serif; */
@@ -110,6 +110,7 @@
 
 .produitTransaction{
   color: white;
+  
 
 
 }
