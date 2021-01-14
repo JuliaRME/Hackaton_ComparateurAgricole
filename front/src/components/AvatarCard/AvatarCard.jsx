@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./AvatarCard.css";
 // import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+
+
+
+
+
 function AvatarCard({ idAgriculteur, farmSize /*, historiqueTransaction**/ }) {
+
+
+  const [transactions, setTransactions] = useState([]);
+  // const [date, setDate] = useState(null);
+  // const [quantite, setQuantite] = useState("");
+  // const [prix, setPrix] = useState(null);
+  // const [produit, setProduit] = useState("");
+
+  useEffect(() => {  
+    fetch('http://localhost:8000/api/transactions')
+      .then((res) => res.json())
+      .then((data) => {      
+        setTransactions(data);
+      });
+  }, []);
+
+
+
+
+
   return (
     <div>
       <div className="card-container">
@@ -17,14 +42,22 @@ function AvatarCard({ idAgriculteur, farmSize /*, historiqueTransaction**/ }) {
         <div className="transaction">
           <h2>Historique des transactions</h2>
         </div>
-
-        {/* <Link to="/Transaction">
-            <img src={TransactionTab} alt="TransactionTab" className="logo" />
-          </Link> */}
+          <ul className="listeTransactions">
+                {transactions.map((transaction, id) => (
+                    <li className="uneTransaction" key={transaction.id}>
+                        <div className="divTHistoriqueTransaction">
+                          <h2 className="dateTransaction">Date : {transaction.created_at}</h2>
+                          <h3 className="produitTransaction">Produit : {transaction.product_id}</h3>
+                          <h3 className="quantiteTransaction">Quantité : {transaction.quantity}</h3>
+                          <h3 className="prixTransaction">Prix : {transaction.price}</h3>                  
+                        </div>
+                    </li>
+                ))}
+          </ul>
       </div>
     </div>
   );
-}
+};
 
 AvatarCard.propTypes = {
   idAgriculteur: PropTypes.string.isRequired,
@@ -33,22 +66,3 @@ AvatarCard.propTypes = {
 };
 
 export default AvatarCard;
-
-// const Avatar = () => {
-// }
-// {
-//      return (
-// <div className="Card">
-//  <div className="Top-Card">
-//   <h3>Avatar</h3>
-//       <h2>Agriculteur 3</h2>
-//        <h3>taille ferme</h3>
-//  </div>
-//    <div className="ligne_horizontal">
-//        <h2>Historique des transactions</h2>
-//       </div>
-//     </div>
-//   );
-//  };
-
-//  export default Avatar;
