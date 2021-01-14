@@ -4,7 +4,6 @@ html {
 
 .container {
   display: flex;
-  border-radius: 15px;
   .container__colonne {
     height: 100%;
     width: 25%;
@@ -14,24 +13,24 @@ html {
       align-items: center;
       justify-content: space-around;
       background-color: #508341;
-      img {
+      .logoAgri {
         margin: 5px;
         position: relative;
         left: 0;
         width: 75%;
       }
-      h1 {
+      .labelPostale {
         color: white;
-        font-size: 24px;
+        font-size: 20px;
       }
-      input {
+      .inputPostale {
         width: 50%;
         border: none;
         border-radius: 3px;
         padding: 5px;
         margin: 15px;
       }
-      button {
+      .buttonInput {
         width: 50%;
         background-color: #5a9449;
         padding: 15px 32px;
@@ -39,18 +38,38 @@ html {
         text-decoration: none;
         border: 1px solid hsla(0, 0%, 100%, 0.5);
         border-radius: 3px;
-        margin: 25px !important;
+        margin: 25px;
         font-family: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
-        color: #fff !important;
+        color: #fff;
         outline:none;
       }
     }
     .container__colonne__liste {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      ul {
+      margin: 0px;
+      .farmerList {
+        margin-left: -42px;
         list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .farmerListItem {
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        width: 80%;
+        font-family: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+        background-color: #508341;
+        border-radius: 3px;
+        box-shadow: #565656 2px 2px 1px;
+      }
+
+      .farmerListItem:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        transition: 0.5s ease;
       }
     }
   }
@@ -59,18 +78,18 @@ html {
     justify-content: center;
     width: 75%;
     height: 100%;
-    
-    // .mapContainer {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    //   left: 0;
-    //   bottom: 0;
-    //   }
-    // iframe {
-    //   border-radius: 0 10px 10px 0;
-    //   border: none;
-    // }
+
+    .imgCity {
+      width: 20px;
+    }
+
+    .nameCity {
+      display: none;
+    }
+
+    .containerMarker:hover .nameCity {
+      cursor: crosshair;
+      display: flex;    
+    }
   }
-  
 }
