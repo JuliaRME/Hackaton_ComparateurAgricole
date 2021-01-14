@@ -3,23 +3,24 @@ import "./AvatarCard.css";
 // import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function AvatarCard({ idAgriculteur, farmSize/*, historiqueTransaction**/ }) {
+function AvatarCard({ idAgriculteur, farmSize /*, historiqueTransaction**/ }) {
   return (
     <div>
       <div className="card-container">
-        <div className="TopSection">      
+        <div className="TopSection">
           <h1 classNameme="AgriculteurTitle">Agriculteur n°{idAgriculteur}</h1>
           <div className="FarmSizeTheme">
-            <h2>Taille ferme: {farmSize} hectare</h2>
+            <h2>Taille ferme: {farmSize} hectares</h2>
           </div>
         </div>
 
-        <div className="BottomSection">
+        <div className="transaction">
           <h2>Historique des transactions</h2>
-          {/* <Link to="/Transaction">
+        </div>
+
+        {/* <Link to="/Transaction">
             <img src={TransactionTab} alt="TransactionTab" className="logo" />
           </Link> */}
-        </div>
       </div>
     </div>
   );
