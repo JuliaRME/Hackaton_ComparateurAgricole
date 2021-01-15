@@ -7,7 +7,7 @@ html {
   display: flex;
   position: relative;
   z-index: 0;
-  .container__colonne {
+  .containercolonne_on,.containercolonne_off {
     position: absolute;
     z-index: 2;
     height: 100%;
@@ -86,6 +86,10 @@ html {
     width: 100%;
     height: 100%;
 
+    .menu{
+      display: none;
+    }
+
     .imgCity {
       width: 20px;
     }
@@ -97,6 +101,35 @@ html {
     .containerMarker:hover .nameCity {
       cursor: crosshair;
       display: flex;    
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    height: 50vh;
+
+    .containercolonne_off {
+      display: none;
+    }
+    .containercolonne_on {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+    }
+
+    .container__map {
+      width: 100%;
+      .menu {
+        display: unset;
+        position: absolute;
+        right: 0;
+        margin: 20px;
+        img {
+          height: 20px;
+          width: auto;
+        }
+      }
     }
   }
 }

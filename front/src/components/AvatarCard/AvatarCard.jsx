@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 
 
-function AvatarCard({ idAgriculteur, farmSize, transaction }) {
+function AvatarCard({ idAgriculteur, farmSize, transaction, setCardDisplayed }) {
 
 
   // const [transactions, setTransactions] = useState([]);
@@ -30,7 +30,7 @@ function AvatarCard({ idAgriculteur, farmSize, transaction }) {
 
 
   return (
-    <div>
+    <div onClick={()=>{setCardDisplayed(false)}}>
       <div className="card-container">
         <div className="TopSection">
           <h1 classNameme="AgriculteurTitle">Agriculteur n°{idAgriculteur}</h1>
@@ -50,7 +50,7 @@ function AvatarCard({ idAgriculteur, farmSize, transaction }) {
                               <div className="divTHistoriqueTransaction">
                                 <h2 className="dateTransaction" >Date : <br></br>
                                 {transac.created_at.substring(0,10)}</h2>
-                                <h3 className="produitTransaction">Produit : {transac.product_id}</h3>
+                                <h3 className="produitTransaction">Produit : blé{/**{transac.product_id}*/}</h3>
                                 <h3 className="quantiteTransaction">Quantité : {transac.quantity} t</h3>
                                 <h3 className="prixTransaction">Prix : {transac.price} €/Tonne</h3>                  
                               </div>
