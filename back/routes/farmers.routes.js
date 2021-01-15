@@ -43,25 +43,26 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.get("/departements/:id", (req, res) => {
+router.get("/codePostale/:id", (req, res) => {
     const { id } = req.params;
-    let sql = `SELECT * FROM farmers WHERE id = ?`;
+    let sql = `SELECT * FROM cities WHERE zipcode = ?`;
     connection.query(sql, [id], (err, result) => {
         if (err) {
             res.status(500).json({ errorMessage: err.message });
         } else {
-            sql = `SELECT * FROM transactions WHERE farmer_id = ?`;
-            connection.query(sql, [id], (errOne, resultOne) => {
+            const idVille = result[0].id;
+             sql = `SELECT * FROM farmers WHERE city_id = ${idVille}`;
+             connection.query(sql, (errOne, resultOne) => {
                 if (errOne) {
-                    res.status(500).json({ errorMessage: errOne.message });
-                } else {
-                    const farmer = {
-                        farmer: result,
-                        transactions: resultOne
+                 res.status(500).json({ errorMessage: errOne.message });
+                 } else {
+                    const farmerList ={
+                        city: result[0],
+                        farmers: resultOne
                     }
-                    res.status(200).send(farmer);
+                    res.status(200).send(farmerList);
                 }
-            });
+             });
         };
     });
 });

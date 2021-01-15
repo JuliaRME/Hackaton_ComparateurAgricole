@@ -30,7 +30,22 @@ function Map() {
     zoom: 10,
   });
 
-  const handleclick = () =>{
+  const handleclick = (id) =>{
+    axios.get(`http://localhost:8000/api/farmers/codePostale/${id}`).then((res) => 
+      res.data
+    ).then(data => { 
+      console.log(data);
+      const farmerTab = data.farmers.map((farmer) => farmer.id);
+      setListeFarmer(farmerTab);
+      setViewport({
+        latitude: data.city.lat,
+        longitude: data.city.longitude,
+        width: "100vw",
+        height: "100vh",
+        zoom: 10,
+      })
+
+    })
   }
 
   const handleclickListItem = (id) =>{
@@ -66,7 +81,13 @@ function Map() {
           <img className="logoAgri" src={logo} alt="logo" />
           <label className="labelPostale">Entrez votre code postale</label>
           <input className="inputPostale" type="text" placeholder="code postale ex: 28230" />
-          <button className="buttonInput" onClick={handleclick}>Valider</button>
+          <button className="buttonInput" onClick={
+            ()=>{
+              let zipInput = document.getElementsByClassName("inputPostale")[0].value;
+              console.log('input hqndler', zipInput, document.getElementsByClassName("inputPostale"))
+              handleclick(zipInput)
+            }
+              }>Valider</button>
         </div>
         <div className="container__colonne__liste" >
           <ul className="farmerList">
