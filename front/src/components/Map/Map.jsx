@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AvatarCard from "./AvatarCard/AvatarCard";
+import AvatarCard from "../AvatarCard/AvatarCard";
 import ReactMapGl, { Marker } from "react-map-gl";
-import cityImage from "../../city.png"
-
+import menu from "../../list.png";
+import cityImage from "../../city.png";
 import "./Map.scss";
 import logo from "./logo.svg";
 
@@ -11,7 +11,10 @@ function Map() {
   const [listeCity, setListeCity] = useState([]); 
   const [farmerCard, setFarmerCard] = useState(); 
   const [cardDisplayed, setCardDisplayed] = useState(false); 
-  const [listeFarmer, setListeFarmer] = useState([]); 
+  const [listeFarmer, setListeFarmer] = useState([]);
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
   useEffect(() => {
     //on récupère la liste des villes afin de créer les marker
     axios.get("http://localhost:8000/api/cities")
@@ -30,7 +33,22 @@ function Map() {
     zoom: 10,
   });
 
-  const handleclick = () =>{
+  const handleclick = (id) =>{
+    axios.get(`http://localhost:8000/api/farmers/codePostale/${id}`).then((res) => 
+      res.data
+    ).then(data => { 
+      console.log(data);
+      const farmerTab = data.farmers.map((farmer) => farmer.id);
+      setListeFarmer(farmerTab);
+      setViewport({
+        latitude: data.city.lat,
+        longitude: data.city.longitude,
+        width: "100vw",
+        height: "100vh",
+        zoom: 10,
+      })
+
+    })
   }
 
   const handleclickListItem = (id) =>{
@@ -42,11 +60,9 @@ function Map() {
         farmSize: data.farmer[0].farm_size,
         transaction: data.transactions,
       }
-      console.log()
       setFarmerCard(farmer);
-      console.log(farmerCard)
-      setCardDisplayed(!cardDisplayed);
-      console.log(cardDisplayed);
+      setSidebar(false);
+      setCardDisplayed(true);
     })
   }
 
@@ -61,12 +77,18 @@ function Map() {
 
   return (
     <div className="container">
-      <div className="container__colonne">
+      <div className={sidebar ? "containercolonne_on" : "containercolonne_off"}>
         <div className="container__colonne__titre">
           <img className="logoAgri" src={logo} alt="logo" />
           <label className="labelPostale">Entrez votre code postale</label>
           <input className="inputPostale" type="text" placeholder="code postale ex: 28230" />
-          <button className="buttonInput" onClick={handleclick}>Valider</button>
+          <button className="buttonInput" onClick={
+            ()=>{
+              let zipInput = document.getElementsByClassName("inputPostale")[0].value;
+              console.log('input hqndler', zipInput, document.getElementsByClassName("inputPostale"))
+              handleclick(zipInput)
+            }
+              }>Valider</button>
         </div>
         <div className="container__colonne__liste" >
           <ul className="farmerList">
@@ -97,10 +119,13 @@ function Map() {
               </Marker>
             ))
           }
+          <div className="menu" onClick={showSidebar}>
+            <img src={menu} alt="menu" />
+          </div>
         </ReactMapGl>
-      </div>
+      </div >  
       {
-        cardDisplayed?<AvatarCard {...farmerCard} />: null
+        cardDisplayed ? <AvatarCard   setCardDisplayed={setCardDisplayed} {...farmerCard} /> : null
       }
   </div>
   );
