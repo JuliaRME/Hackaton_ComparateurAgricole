@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mainRouter = require("./routes/index"); //fichier de config pour le router d'express
 require("dotenv").config(); // fichier pour se connecter a la BD
 
 // config d'express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 
 // test serveur sur la route /

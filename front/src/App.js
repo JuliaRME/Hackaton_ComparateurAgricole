@@ -1,9 +1,11 @@
 import './App.css';
+import AvatarCard from "./components/AvatarCard/AvatarCard";
+import Map from "./components/Map/Map"
 
 function App() {
   return (
     <div className="App">
-      <h1>App</h1>
+      <Map />
     </div>
   );
 }
