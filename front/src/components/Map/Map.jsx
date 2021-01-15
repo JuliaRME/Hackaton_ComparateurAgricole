@@ -42,6 +42,7 @@ function Map() {
         farmSize: data.farmer[0].farm_size,
         transaction: data.transactions,
       }
+      console.log()
       setFarmerCard(farmer);
       console.log(farmerCard)
       setCardDisplayed(!cardDisplayed);

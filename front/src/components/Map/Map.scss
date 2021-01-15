@@ -4,7 +4,11 @@ html {
 
 .container {
   display: flex;
+  position: relative;
+  z-index: 0;
   .container__colonne {
+    position: absolute;
+    z-index: 2;
     height: 100%;
     width: 25%;
     .container__colonne__titre {
@@ -75,8 +79,10 @@ html {
   }
   .container__map {
     display: flex;
+    position: absolute;
+    z-index: 1;
     justify-content: center;
-    width: 75%;
+    width: 100%;
     height: 100%;
 
     .imgCity {
